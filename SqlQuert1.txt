@@ -1,0 +1,42 @@
+SELECT email_domain FROM users 
+WHERE email_domain 
+LIKE '%.edu%' 
+LIMIT 25;
+
+SELECT COUNT(*) FROM users
+WHERE email_domain 
+LIKE '%.edu%' 
+AND 
+city='New York';
+
+SELECT COUNT(mobile_app) FROM users ;
+
+SELECT sign_up_at,
+strftime('%H',sign_up_at),
+COUNT(*) FROM users 
+GROUP BY 1
+LIMIT 50;
+
+SELECT users.user_id,
+users.city,
+progress.learn_cpp,
+progress.learn_sql,
+progress.learn_html,
+progress.learn_javascript,
+progress.learn_java
+FROM users
+JOIN progress
+ON users.user_id = progress.user_id
+where city='New York';
+
+SELECT users.user_id,
+users.city,
+progress.learn_cpp,
+progress.learn_sql,
+progress.learn_html,
+progress.learn_javascript,
+progress.learn_java
+FROM users
+JOIN progress
+ON users.user_id = progress.user_id
+where city='Chicago';
